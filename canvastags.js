@@ -1,0 +1,3 @@
+CanvasRenderingContext2D.canvastag = {
+
+}
