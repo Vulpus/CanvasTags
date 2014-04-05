@@ -9,25 +9,37 @@
                                          |___/     
 v1.0 Uncompressed Documented 
 */
-var ctInstance = function() {
-  this.ctlocal = {
+var ctInstance = function(canvas) {
+  this.canvas = canvas;
+  this.ctx = canvas.getContext("2d");
+  this.objects = {
+    "new":function(object) {
+      this.all.push(object)
+    },
+    "all":[],
+    
+  }
+  this.render = function() {
+    for (var i = this.objects.all.length - 1; i >= 0; i--) {
+	    this.objects.all[i].draw();
+    };
+  }
   
-  } // Make local variables
-  this.ctlocal.crc2d = CanvasRenderingContext2D // Set a local variable for CanvasRenderingContext
-  this.ctlocal.crc2d.canvastag = ctlocal.canvastag = {
-  
-  } // Initalize API
-  this.ctlocal.crc2d.canvastag.load = function(url) {
-    if(url.split(".")[url.split(".").length - 1] != "js") throw new TypeError("File must be a javscript file(Loading "+url+")"); // Test if the file is a javascript file. If not throw a new error 
-    var scr = document.createElement("SCRIPT");
-    scr.src = url // Set script source to the url
-    document.head.appendChild(scr)
-  } // Start up load function
- 
 }
 var CanvasTag = ct = Ct = {
   "_":function(sel) {
     return document.querySelector(sel)
   },
-  "new": ctInstance // Open OOP into main API
+  "instance": ctInstance,
+  "load": function(url) {
+    if(url.split(".")[url.split(".").length - 1] != "js") throw new TypeError("File must be a javscript file(Loading "+url+")"); 
+    // Test if the file is a javascript file. If not throw a new error 
+    var scr = document.createElement("SCRIPT");
+    scr.src = url // Set script source to the url
+    document.head.appendChild(scr)
+    
+  } // Start up load function
+  "objects": {
+    
+  }
 } // Initalize CanvasTag procedural API
