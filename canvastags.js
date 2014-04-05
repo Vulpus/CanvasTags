@@ -17,7 +17,7 @@ var ctInstance = function() {
   this.ctlocal.crc2d.canvastag = ctlocal.canvastag = {
   
   } // Initalize API
-  this.ctlocal.canvastag.load = function(url) {
+  this.ctlocal.crc2d.canvastag.load = function(url) {
     if(url.split(".")[url.split(".").length - 1] != "js") throw new TypeError("File must be a javscript file(Loading "+url+")"); // Test if the file is a javascript file. If not throw a new error 
     var scr = document.createElement("SCRIPT");
     scr.src = url // Set script source to the url
